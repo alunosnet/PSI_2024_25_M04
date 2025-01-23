@@ -5,7 +5,7 @@ Menu: 1.Entrada 2.Saída 3.Consultar Fila 4.Terminar
 """
 import numpy as np
 
-NR_MAX = 10
+NR_MAX = 4
 def Entrada(fila):
     """Adicionar um nome ao final da fila de espera"""
     #procurar o ultimo lugar da fila
@@ -26,15 +26,38 @@ def Entrada(fila):
 
 def Saida(fila):
     """Retirar o primeiro nome da fila de espera"""
-    pass
+    #verificar se a fila está vazia
+    if fila[0]=="":
+        print("Não tem ninguém a fila de espera.")
+        return
+    #retirar o primeiro nome da fila
+    print(f"O cliente com o nome {fila[0]} pode entrar.")
+    #avançar os restantes nomes da fila uma posição
+    for i in range(NR_MAX-1):
+        fila[i] = fila[i+1]
+    fila[NR_MAX-1] = "" #limpar a última posição do array
+
 def Consultar(fila):
     """Listar os nomes na fila de espera"""
-    pass
+    #Verificar se a fila está vazia
+    if fila[0]=="":
+        print("Não tem ninguém a fila de espera.")
+        return
+    #listar os nomes das pessoas em espera
+    Fila_Cheia = True
+    for posicao in range(NR_MAX):
+        if fila[posicao]=="":
+            Fila_Cheia = False
+            break
+        print(f"{posicao+1}º - {fila[posicao]}")
+    #verificar se a fila está cheia
+    if Fila_Cheia == True:
+        print("Fila de espera está cheia.")
 
 def main():
     fila = np.empty(NR_MAX,dtype="U20")
     #limpar array
-    for i in NR_MAX:
+    for i in range(NR_MAX):
         fila[i]=""
     op = 0
     while op !=4:
