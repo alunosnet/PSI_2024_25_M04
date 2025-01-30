@@ -63,7 +63,18 @@ def ListaSuperiorMedia(matriculas,tempos):
         if tempos[p] > media:
             print(f"{matriculas[p]} este {tempos[p]} que é superior à média")
 
-#Verificar se existem algum carro que esteve no estacionamento mais do que uma vez
+#Verificar se existe algum carro que esteve no estacionamento mais do que uma vez
+def ListarRepetidos(matriculas):
+    for m in matriculas:
+        contar = 0
+        if m=="":
+            break
+        for m2 in matriculas:
+            if m == m2:
+                contar = contar + 1
+        if contar > 1:
+            print(f"A matricula {m} esteve estacionada {contar} vezes")
+
 #Permitir a pesquisa de uma matricula inserida pelo utilizador e mostrar os tempos dessa matricula caso existam
 #Mostrar a lista das matriculas ordenadas pelos tempos de estacionamento (maior para o menor)
 #Mostrar os tempos de estacionamento convertidos em minutos:segundos
