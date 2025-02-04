@@ -20,13 +20,18 @@ else:
     #procurar as moedas que prefazem a quantia do troco
     #TODO: testar o ChatGPT para ver se consegue
     while troco > 0:
+        encontra=False
         for m in range(len(moedas)-1,-1,-1):
             #se existe a moeda e se valor a devolver é maior do que a moeda
-            if moedas[m]<troco and stock[m]>0:
+            if moedas[m]<=troco and stock[m]>0:
                 moedas_a_devolver = moedas_a_devolver + str(moedas[m]) + ","
-                troco = troco - moedas[m]
+                troco = troco - round(moedas[m],2)
+                troco = round(troco,2)
                 stock[m] = stock[m] - 1
+                encontra=True
                 break
-        #TODO: verificar se não existem moedas suficientes para dar o troco!
+        if encontra == False:
+            print("Não existem moedas suficientes para fazer o troco")
+            break
     print(f"Moedas a devolver: {moedas_a_devolver}")
-    print(moedas,stock)
+    #print(moedas,stock)
