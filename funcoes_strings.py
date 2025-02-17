@@ -12,7 +12,7 @@ texto =  texto.strip() #devolve a string sem espaços em branco no inicio e no f
 print(texto)
 texto = texto.replace(" ","-") #devolve a string substituindo o primeiro parametro pelo segundo (" " por "-")
 print(texto)
-print(texto.isdigit()) #devolve verdadeiro se todos as letras sem digitos (números)
+print(texto.isdigit()) #devolve verdadeiro se todos as letras são digitos (números)
 frase="Olá mundo, o computador é uma torradeira"
 palavras = frase.split(" ")  #devolve uma lista com as partes da string separadas por carater indicado " "
 print(palavras)
@@ -31,3 +31,4 @@ codigo = ord('a')
 print(codigo)
 #devolve a letra correspondente ao código ASCII
 letra = chr(97)
+print(frase.count("a"))
